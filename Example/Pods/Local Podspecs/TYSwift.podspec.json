@@ -1,0 +1,28 @@
+{
+  "name": "TYSwift",
+  "version": "0.1.0",
+  "summary": "A short description of TYSwift.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/istomyang/TYSwift",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "istomyang": "istomyang@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/istomyang/TYSwift.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "TYSwift/Classes/**/*",
+  "frameworks": "UIKit",
+  "dependencies": {
+    "KeychainAccess": [
+
+    ]
+  }
+}

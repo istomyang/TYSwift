@@ -7,10 +7,24 @@ target 'TYSwift_Example' do
 
   target 'TYSwift_Tests' do
     inherit! :search_paths
-
-    pod 'Quick', '~> 2.2.0'
-    pod 'Nimble', '~> 8.0.7'
-    pod 'FBSnapshotTestCase' , '~> 2.1.4'
-    pod 'Nimble-Snapshots' , '~> 8.0.0'
+    
+    pod 'Quick'
+    pod 'Nimble'
+    pod 'FBSnapshotTestCase'
+    pod 'Nimble-Snapshots'
   end
+end
+
+# https://github.com/Quick/Nimble/issues/855
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        if target.name == "Nimble"
+            target.build_configurations.each do |config|
+                xcconfig_path = config.base_configuration_reference.real_path
+                xcconfig = File.read(xcconfig_path)
+                new_xcconfig = xcconfig.sub('lswiftXCTest', 'lXCTestSwiftSupport')
+                File.open(xcconfig_path, "w") { |file| file << new_xcconfig }
+            end
+        end
+    end
 end
